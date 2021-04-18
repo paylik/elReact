@@ -1,18 +1,12 @@
+import updateWorksList from "./works-list";
+import updateWorksCard from "./works-card";
 
-const initialState = {
-    works: []
-};
+const reducer = (state, action) => {
 
-const reducer = ( state = initialState, action ) => {
-
-    switch (action.type) {
-
-        case 'WORKS_LOADED':
-            return {
-                works: action.payload
-            };
-        default: return state;
-    }
+    return {
+        worksList: updateWorksList(state, action),
+        worksCard: updateWorksCard(state, action)
+    };
 };
 
 export default reducer;

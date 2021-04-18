@@ -1,8 +1,14 @@
 import React from "react";
 import WorksList from "../works-list";
+import SelectedWorksTable from "../selected-works-table";
 
 const CardPage = () => {
-    return <WorksList />
+    return (
+        <div>
+        <WorksList />
+        <SelectedWorksTable/>
+        </div>
+    )
 };
 
 export default CardPage;
