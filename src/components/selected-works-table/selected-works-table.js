@@ -71,10 +71,10 @@ const mapStateToProps = ({ worksCard: {cardItems, total}}) => {
     }
 }
 
-const mapDispatchToPraps = {
+const mapDispatchToProps = {
     onIncrease: workAddedToCard,
     onDecrease: workDecreaseFromCard,
     onDelete: workRemoveFromCard
 }
 
-export default connect(mapStateToProps, mapDispatchToPraps)(SelectedWorksTable);
+export default connect(mapStateToProps, mapDispatchToProps)(SelectedWorksTable);

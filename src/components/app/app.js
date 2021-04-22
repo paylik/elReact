@@ -8,6 +8,7 @@ const App = () => {
     return (
         <main role="main" className="container">
             <Header numItems={15} total={200} />
+            <div className="tab-content" id="nav-tabContent">
         <Switch>
             <Route
                 path="/"
@@ -24,6 +25,7 @@ const App = () => {
         />
 
         </Switch>
+            </div>
         </main>
     )
 };
