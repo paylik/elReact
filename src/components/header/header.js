@@ -1,8 +1,8 @@
 import React from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCartArrowDown, faEnvelope, faMapMarkedAlt, faMobileAlt} from "@fortawesome/free-solid-svg-icons";
+import {NavLink} from "react-router-dom";
 import "./header.css";
-import {Link} from "react-router-dom";
 
 const Header = ({numItems, total}) => {
     const items = [
@@ -12,56 +12,56 @@ const Header = ({numItems, total}) => {
     ]
     const elements = items.map((item) => {
         return (
-            <div className="info-box text-center float-left">
+            <div className="info-box text-center float-left col">
                 <FontAwesomeIcon icon={item.icon} size={item.size} className="float-left mr-1"/>
                 <div>{item.title}</div>
                 <div>{item.content}</div>
             </div>)
     })
     return (
-        <header className="header">
+        <header className="">
 
-            <nav className="navbar navbar-expand-lg navbar-light container">
+            <div className="container">
                 <div className="row">
-                    <div className="title col-3 "><Link to="/"><h1 className="logo text-dark">Электрик </h1></Link>
+                    <div className="title col-3 ">
+                        <NavLink  to="/"><h1 className="logo text-dark">Электрик </h1></NavLink>
                     </div>
-                    <div className="contacts col-9">
-                        {elements}
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-3">
-                        <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
-                                aria-expanded="false" aria-label="Toggle navigation">
-                            <span className="navbar-toggler-icon"/>
-                        </button>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-                        <div className="navbar-nav">
-                            <Link to="/" className="nav-link" id="nav-home-tab" data-bs-toggle="tab"
-                                  data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home"
-                                  aria-selected="true">Главная</Link>
-                            <Link to="/about" className="nav-link" id="nav-about-tab" data-bs-toggle="tab"
-                                  data-bs-target="#nav-about" type="button" role="tab" aria-controls="nav-about"
-                                  aria-selected="false">О нас</Link>
-                            <Link to="/card" className="nav-link" id="nav-card-tab" data-bs-toggle="tab"
-                                  data-bs-target="#nav-card" type="button" role="tab" aria-controls="nav-card"
-                                  aria-selected="false">Калькулятор</Link>
+                    <div className="col-9">
+                        <div className="contacts row">
+                            {elements}
                         </div>
-
-
                     </div>
-                    <div className="col-md-3 ml-auto">
-                        <FontAwesomeIcon icon={faCartArrowDown}/>
-                        {numItems} шт. на сумму {total} рублей.
+                </div>
+            </div>
+            <nav className="navbar navbar-expand-lg navbar-light">
+                <div className="container">
+                    <div className="row">
+                        <div className="col">
+                            <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
+                                    aria-expanded="false" aria-label="Toggle navigation">
+                                <span className="navbar-toggler-icon"/>
+                            </button>
+                        </div>
+                    </div>
+                    <div className="row row100">
+                        <div className="collapse navbar-collapse col-md-8" id="navbarNavAltMarkup">
+                            <div className="navbar-nav">
+                                <NavLink exact  to="/" className="nav-link col" activeClassName = "active"
+                                      >Главная</NavLink>
+                                <NavLink exact  to="/about" className="nav-link col" activeClassName = "active"
+                                      >О нас</NavLink>
+                                <NavLink exact  to="/card" className="nav-link col" activeClassName = "active"
+                                      >Калькулятор</NavLink>
+                            </div>
+                        </div>
+                        <div className="col-md-4 cart">
+                            <FontAwesomeIcon icon={faCartArrowDown} size="3x" className="float-left mr-1"/>
+                            <p>{numItems} шт. на сумму {total} руб.</p>
+                        </div>
                     </div>
                 </div>
             </nav>
-
-
         </header>
     )
 };
