@@ -3,16 +3,17 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCartArrowDown, faEnvelope, faMapMarkedAlt, faMobileAlt} from "@fortawesome/free-solid-svg-icons";
 import {NavLink} from "react-router-dom";
 import "./header.css";
+import {connect} from "react-redux";
 
-const Header = ({numItems, total}) => {
+const Header = ({totalQuantity, totalPrice}) => {
     const items = [
         {icon: faMapMarkedAlt, size: "3x", title: "Мы работаем:", content: "г.Сморгонь + 60 км."},
-        {icon: faMobileAlt, size: "3x", title: "Позвоните:", content: "+375 (29) 11 88 166"},
+        {icon: faMobileAlt, size: "3x", title: "Позвоните:", content: "+375 (33) 903 68 62"},
         {icon: faEnvelope, size: "3x", title: "Напишите:", content: "paylik@yandex.ru"},
     ]
     const elements = items.map((item) => {
         return (
-            <div className="info-box text-center float-left col">
+            <div className="info-box text-center float-left col" key={item.title}>
                 <FontAwesomeIcon icon={item.icon} size={item.size} className="float-left mr-1"/>
                 <div>{item.title}</div>
                 <div>{item.content}</div>
@@ -57,7 +58,7 @@ const Header = ({numItems, total}) => {
                         </div>
                         <div className="col-md-4 cart">
                             <FontAwesomeIcon icon={faCartArrowDown} size="3x" className="float-left mr-1"/>
-                            <p>{numItems} шт. на сумму {total} руб.</p>
+                            <p>{totalQuantity} шт. на сумму {totalPrice} руб.</p>
                         </div>
                     </div>
                 </div>
@@ -66,4 +67,11 @@ const Header = ({numItems, total}) => {
     )
 };
 
-export default Header;
+const mapStateToProps = (state) => {
+    return {
+        totalQuantity: state.totalQuantity,
+        totalPrice: state.totalPrice
+    }
+}
+
+export default connect(mapStateToProps)(Header);

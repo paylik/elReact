@@ -44,11 +44,19 @@ const fetchWorks = (electricianWorksService, dispatch) => () => {
     electricianWorksService.getWorks()
         .then((data) => dispatch(worksLoaded(data)))
         .catch((err) => dispatch(worksError(err)));
+};
+
+const fetchTotals = (totalQuantity, totalPrice) => {
+    return {
+        type: 'FETCH_TOTALS',
+        payload: totalPrice
+    }
 }
 
 export {
     fetchWorks,
     workAddedToCard,
     workDecreaseFromCard,
-    workRemoveFromCard
+    workRemoveFromCard,
+    fetchTotals
 };

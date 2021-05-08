@@ -42,9 +42,12 @@ const SelectedWorksTable = ({items, total, onIncrease, onDecrease, onDelete}) =>
         );
     }
 
+    const totalQuantity = items.reduce((q, ob) => { return  q + ob.count }, 0)
+    const totalPrice = items.reduce((q, ob) => { return  q + ob.count * ob.price }, 0)
+
     return (
         <Fragment>
-            <h2>Ваш заказ:</h2>
+            <h2>Ваш заказ в количестве { totalQuantity } шт. на сумму { totalPrice } </h2>
             <table className="table">
                 <thead>
                 <tr>

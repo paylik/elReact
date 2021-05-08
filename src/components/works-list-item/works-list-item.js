@@ -5,12 +5,12 @@ const  WorksListItem = ({ work, onAddedToCard }) => {
     const { name, price, quantity } = work;
     return (
         <div className="d-flex">
-            <span>{ name }</span>
-            <span>{ price }</span>
-            <span>{ quantity }</span>
+            <div>{ name }</div>
+            <h3 className="ml-auto">{ price } руб.</h3>
+            <div>{ quantity }</div>
             <button
                 type="button"
-                className="btn btn-primary ml-auto"
+                className="btn btn-primary ml-1"
                 onClick={onAddedToCard}
             >Добавить</button>
         </div>
