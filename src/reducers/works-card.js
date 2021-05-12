@@ -41,7 +41,7 @@ const updateWorkItem = (work, item = {}, quantity) => {
 
 const updateOrder = (state, workId, quantity) => {
 
-    const {worksList: {works}, worksCard: {cardItems}} = state;
+    const {worksList: {works}, worksCard: {cardItems, totalCount, totalPrice}} = state;
 
     const work = works.find(({id}) => id === workId);
     const workIndex = cardItems.findIndex(({id}) => id === workId);
@@ -50,8 +50,9 @@ const updateOrder = (state, workId, quantity) => {
     const newItem = updateWorkItem(work, item, quantity);
 
     return {
-        total: 0,
-        cardItems: updateWorkItems(cardItems, newItem, workIndex)
+        cardItems: updateWorkItems(cardItems, newItem, workIndex),
+        totalCount: totalCount + quantity,
+        totalPrice: totalPrice + ( quantity * newItem.price )
     };
 }
 
@@ -60,7 +61,8 @@ const updateWorksCard = (state, action) => {
     if (state === undefined) {
         return {
             cardItems: [],
-            total: 0
+            totalPrice: 0,
+            totalCount: 0
         }
     }
     switch (action.type) {

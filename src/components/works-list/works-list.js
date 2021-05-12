@@ -31,6 +31,9 @@ class WorksListContainer  extends Component {
 
 const WorksList = ({ works, onAddedToCard }) => {
     return (
+        <div>
+            <h2>Выберите из списка необходимые работы.</h2>
+            <h2>Внизу страницы отобразятся выбранные вами пункты.</h2>
         <ul>
             {
                 works.map((work) => {
@@ -43,6 +46,7 @@ const WorksList = ({ works, onAddedToCard }) => {
                 })
             }
         </ul>
+        </div>
     )
 }
 

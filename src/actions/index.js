@@ -46,17 +46,9 @@ const fetchWorks = (electricianWorksService, dispatch) => () => {
         .catch((err) => dispatch(worksError(err)));
 };
 
-const fetchTotals = (totalQuantity, totalPrice) => {
-    return {
-        type: 'FETCH_TOTALS',
-        payload: totalPrice
-    }
-}
-
 export {
     fetchWorks,
     workAddedToCard,
     workDecreaseFromCard,
-    workRemoveFromCard,
-    fetchTotals
+    workRemoveFromCard
 };

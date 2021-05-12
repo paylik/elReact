@@ -5,7 +5,7 @@ import {NavLink} from "react-router-dom";
 import "./header.css";
 import {connect} from "react-redux";
 
-const Header = ({totalQuantity, totalPrice}) => {
+const Header = ({totalCount, totalPrice}) => {
     const items = [
         {icon: faMapMarkedAlt, size: "3x", title: "Мы работаем:", content: "г.Сморгонь + 60 км."},
         {icon: faMobileAlt, size: "3x", title: "Позвоните:", content: "+375 (33) 903 68 62"},
@@ -58,7 +58,7 @@ const Header = ({totalQuantity, totalPrice}) => {
                         </div>
                         <div className="col-md-4 cart">
                             <FontAwesomeIcon icon={faCartArrowDown} size="3x" className="float-left mr-1"/>
-                            <p>{totalQuantity} шт. на сумму {totalPrice} руб.</p>
+                            <p>{totalCount} шт. на сумму {totalPrice} руб.</p>
                         </div>
                     </div>
                 </div>
@@ -67,10 +67,10 @@ const Header = ({totalQuantity, totalPrice}) => {
     )
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({worksCard: {totalPrice, totalCount}}) => {
     return {
-        totalQuantity: state.totalQuantity,
-        totalPrice: state.totalPrice
+        totalCount,
+        totalPrice
     }
 }
 

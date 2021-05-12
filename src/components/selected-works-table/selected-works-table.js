@@ -5,7 +5,7 @@ import {workAddedToCard, workDecreaseFromCard, workRemoveFromCard} from "../../a
 import './selected-works-table.css'
 import {connect} from "react-redux";
 
-const SelectedWorksTable = ({items, total, onIncrease, onDecrease, onDelete}) => {
+const SelectedWorksTable = ({items, totalPrice, totalCount, onIncrease, onDecrease, onDelete}) => {
 
     const renderRow = (item, idx) => {
         const {id, name, count, price} = item;
@@ -42,12 +42,9 @@ const SelectedWorksTable = ({items, total, onIncrease, onDecrease, onDelete}) =>
         );
     }
 
-    const totalQuantity = items.reduce((q, ob) => { return  q + ob.count }, 0)
-    const totalPrice = items.reduce((q, ob) => { return  q + ob.count * ob.price }, 0)
-
     return (
         <Fragment>
-            <h2>Ваш заказ в количестве { totalQuantity } шт. на сумму { totalPrice } </h2>
+            <h2>Ваш заказ в количестве { totalCount } шт. на сумму { totalPrice } </h2>
             <table className="table">
                 <thead>
                 <tr>
@@ -67,10 +64,11 @@ const SelectedWorksTable = ({items, total, onIncrease, onDecrease, onDelete}) =>
     )
 }
 
-const mapStateToProps = ({ worksCard: {cardItems, total}}) => {
+const mapStateToProps = ({ worksCard: {cardItems, totalPrice, totalCount}}) => {
     return {
         items: cardItems,
-        total
+        totalPrice,
+        totalCount
     }
 }
 
