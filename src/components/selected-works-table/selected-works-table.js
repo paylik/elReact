@@ -11,7 +11,7 @@ const SelectedWorksTable = ({items, totalPrice, totalCount, onIncrease, onDecrea
         const {id, name, count, price} = item;
         return (
             <tr key={id}>
-                <th scope="row">{idx + 1}</th>
+                <th scope="row" className="d-none d-lg-block">{idx + 1}</th>
                 <td>{name}</td>
                 <td>{price}</td>
                 <td>{count}</td>
@@ -45,15 +45,15 @@ const SelectedWorksTable = ({items, totalPrice, totalCount, onIncrease, onDecrea
     return (
         <Fragment>
             <h2>Ваш заказ в количестве { totalCount } шт. на сумму { totalPrice } </h2>
-            <table className="table">
+            <table className="table ml-n4">
                 <thead>
                 <tr>
-                    <th scope="col">#</th>
+                    <th scope="col" className="d-none d-lg-block">#</th>
                     <th scope="col">Наименование</th>
-                    <th scope="col">Цена</th>
-                    <th scope="col">Количество</th>
-                    <th scope="col">Стоимость</th>
-                    <th scope="col">Действия</th>
+                    <th scope="col"><p className="d-none d-md-inline" >Цена</p><p className="d-md-none">Ц.</p></th>
+                    <th scope="col"><p className="d-none d-md-inline" >Количество</p><p className="d-md-none">Кол.</p></th>
+                    <th scope="col"><p className="d-none d-md-inline" >Стоимость</p><p className="d-md-none">Ст.</p></th>
+                    <th scope="col"><p className="d-none d-md-inline px-2" >  Действия  </p><p className="d-md-none">Оп.</p></th>
                 </tr>
                 </thead>
                 <tbody>
